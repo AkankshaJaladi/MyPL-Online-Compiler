@@ -21,3 +21,16 @@ Built-ins: PRINT, INPUT, CLEAR, type checks, RUN to execute scripts
 
 ## Syntax Reference
 The language syntax is formally defined in 'grammar.txt' file.
+
+## Project Structure
+myopl/
+│── app.py                  # Flask web runner
+│── basic.py                # Core interpreter
+│── shell.py                # CLI REPL
+│── strings_with_arrows.py  # Error formatting
+│── grammar.txt             # Language grammar
+│── __pychche__/
+    |__basic.cpython-313
+    |__strings_with_arrows.cpython-313
+│── templates/
+  |__index.html
