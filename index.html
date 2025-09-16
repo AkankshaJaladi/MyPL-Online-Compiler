@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My OPL Web Editor</title>
+  <style>
+    body { font-family: Arial; margin: 20px; background: #f4f4f4; }
+    #editor { width: 100%; height: 300px; font-family: monospace; }
+    #output { white-space: pre; background: #222; color: #0f0; padding: 10px; margin-top: 10px; border-radius: 5px; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h2>My OPL (Own Programming Language)</h2>
+  <textarea id="editor">PRINT("Hello from MyOPL!")</textarea><br>
+  <button onclick="runCode()">Run</button>
+  <div id="output"></div>
+
+  <script>
+    async function runCode() {
+      let code = document.getElementById("editor").value;
+      let response = await fetch("/run", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({code: code})
+      });
+      let data = await response.json();
+      document.getElementById("output").innerText = data.output;
+    }
+  </script>
+</body>
+</html>
